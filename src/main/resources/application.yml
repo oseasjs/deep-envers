@@ -1,0 +1,28 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: deep-envers
+  jackson:
+    serialization:
+      FAIL_ON_EMPTY_BEANS: false
+  datasource:
+    platform: h2
+    url: jdbc:h2:mem:deep-envers;DB_CLOSE_ON_EXIT=FALSE;MODE=PostgreSQL;INIT=CREATE SCHEMA IF NOT EXISTS audit;
+    username: sa
+    password:
+    driver-class-name: org.h2.Driver
+  h2:
+    console:
+      enabled: true
+  jpa:
+    show_sql: true
+    hibernate:
+      show_sql: true
+      dialect: org.hibernate.dialect.PostgreSQLDialect
+    properties:
+      org:
+        hibernate:
+          envers:
+            default_schema: audit
